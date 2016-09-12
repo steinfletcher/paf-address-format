@@ -1,7 +1,7 @@
 paf-address-format
 ===
 
-A simple library that formats a PAF address for print.
+A simple library (with no dependencies) that formats a PAF address for print.
 
 ## Usage
 
