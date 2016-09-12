@@ -27,10 +27,10 @@ assertThat(parts.get(3)).isEqualTo("SP5 4NA");
 String formatted = deliveryPoint.toString();
 
 assertThat(formatted).isEqualTo(
-    "1A SEASTONE COURT\n" +
-    "STATION ROAD\n" +
-    "HOLT\n" +
-    "NR25 7HG"
+    "12A HIGH STREET NORTH\n" +
+    "COOMBE BISSETT\n" +
+    "SALISBURY\n" +
+    "SP5 4NA"
 );
 
 ```
