@@ -111,14 +111,16 @@ public class AddressFormatterFactoryTest {
     assertThat(formatter).isInstanceOf(Rule7Formatter.class);
   }
 
-  @Test(expected = IllegalArgumentException.class)
-  public void throwsExceptionIfCannotDetermineFormat() throws Exception {
+  @Test
+  public void returnsAllFieldsFormatterIfCannotDetermineRule() throws Exception {
     DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
         .withThroughfare("JOHN STREET")
         .withPostTown("WINCHESTER")
         .withPostcode("SO23 9AP")
         .build();
 
-    AddressFormatterFactory.createFormatter(deliveryPoint);
+    AddressFormatter formatter = AddressFormatterFactory.createFormatter(deliveryPoint);
+
+    assertThat(formatter).isInstanceOf(AllFieldsFormatter.class);
   }
 }

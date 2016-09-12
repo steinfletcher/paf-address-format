@@ -47,4 +47,26 @@ public class Rule7FormatterTest {
     assertThat(parts.get(3)).isEqualTo("CORYTON");
     assertThat(parts.get(4)).isEqualTo("BP23 6AA");
   }
+
+  @Test
+  public void handlesZeroInBuildingNumberField() throws Exception {
+    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
+        .withSubBuildingName("FLAT 1")
+        .withBuildingNumber("0")
+        .withBuildingName("HOLLY HOUSE")
+        .withThroughfare("OAK AVENUE")
+        .withDependentLocality("BIDDENDEN")
+        .withPostTown("ASHFORD")
+        .withPostcode("TN27 8BT")
+        .build();
+
+    List<String> parts = deliveryPoint.formattedParts();
+
+    assertThat(parts.get(0)).isEqualTo("FLAT 1");
+    assertThat(parts.get(1)).isEqualTo("HOLLY HOUSE");
+    assertThat(parts.get(2)).isEqualTo("OAK AVENUE");
+    assertThat(parts.get(3)).isEqualTo("BIDDENDEN");
+    assertThat(parts.get(4)).isEqualTo("ASHFORD");
+    assertThat(parts.get(5)).isEqualTo("TN27 8BT");
+  }
 }

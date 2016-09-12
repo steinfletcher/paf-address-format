@@ -170,7 +170,9 @@ public class DeliveryPoint {
     }
 
     public Builder withBuildingNumber(String buildingNumber) {
-      this.buildingNumber = buildingNumber;
+      if (!"0".equals(buildingNumber)) {
+        this.buildingNumber = buildingNumber;
+      }
       return this;
     }
 

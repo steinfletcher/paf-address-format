@@ -23,7 +23,7 @@ public class AddressFormatterFactory {
     } else if (isRule7(address)) {
       return new Rule7Formatter();
     }
-    throw new IllegalArgumentException("Could not determine rule");
+    return new AllFieldsFormatter();
   }
 
   private static boolean isRule1(DeliveryPoint deliveryPoint) {

@@ -81,4 +81,40 @@ public class Rule3FormatterTest {
     assertThat(parts.get(3)).isEqualTo("CANNOCK");
     assertThat(parts.get(4)).isEqualTo("WS11 5SB");
   }
+
+  @Test
+  public void formatsTheDeliveryPointWithOrganisationAlt() throws Exception {
+    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
+        .withOrganisation("CATH'S CAKES")
+        .withBuildingName("VICTORIA HOUSE")
+        .withThroughfare("HIGH STREET")
+        .withPostTown("PORTSMOUTH")
+        .withPostcode("PO1 1AF")
+        .build();
+
+    List<String> parts = deliveryPoint.formattedParts();
+
+    assertThat(parts.get(0)).isEqualTo("CATH'S CAKES");
+    assertThat(parts.get(1)).isEqualTo("VICTORIA HOUSE");
+    assertThat(parts.get(2)).isEqualTo("HIGH STREET");
+    assertThat(parts.get(3)).isEqualTo("PORTSMOUTH");
+    assertThat(parts.get(4)).isEqualTo("PO1 1AF");
+  }
+
+  @Test
+  public void formatsTheDeliveryPointWithPoBox() throws Exception {
+    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
+        .withBuildingName("ROBINSONS")
+        .withPoBoxNumber("61")
+        .withPostTown("FAREHAM")
+        .withPostcode("PO14 1UX")
+        .build();
+
+    List<String> parts = deliveryPoint.formattedParts();
+
+    assertThat(parts.get(0)).isEqualTo("PO BOX 61");
+    assertThat(parts.get(1)).isEqualTo("ROBINSONS");
+    assertThat(parts.get(2)).isEqualTo("FAREHAM");
+    assertThat(parts.get(3)).isEqualTo("PO14 1UX");
+  }
 }
