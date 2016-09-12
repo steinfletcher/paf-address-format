@@ -3,7 +3,7 @@ paf-address-format
 
 A simple library (with no dependencies) that formats a PAF address for print.
 
-Attempts to comply with the Royal Mail's [PAF Programmer's guide](href="http://www.royalmail.com/sites/default/files/docs/pdf/programmers_guide_edition_7_v5.pdf)
+Attempts to comply with the Royal Mail's [PAF Programmer's guide](http://www.royalmail.com/sites/default/files/docs/pdf/programmers_guide_edition_7_v5.pdf)
 
 ## Usage
 
