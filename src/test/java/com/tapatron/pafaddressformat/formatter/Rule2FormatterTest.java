@@ -20,9 +20,8 @@ public class Rule2FormatterTest {
 
     List<String> parts = deliveryPoint.formattedParts();
 
-    assertThat(parts.get(0)).isEqualTo("1");
-    assertThat(parts.get(1)).isEqualTo("ACACIA AVENUE");
-    assertThat(parts.get(2)).isEqualTo("ABINGDON");
-    assertThat(parts.get(3)).isEqualTo("OX14 4PG");
+    assertThat(parts.get(0)).isEqualTo("1 ACACIA AVENUE");
+    assertThat(parts.get(1)).isEqualTo("ABINGDON");
+    assertThat(parts.get(2)).isEqualTo("OX14 4PG");
   }
 }

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.tapatron.pafaddressformat.common.Lists.addIfPresent;
-import static com.tapatron.pafaddressformat.common.Strings.isPresent;
 
 class Rule4Formatter implements AddressFormatter {
   @Override
@@ -15,10 +14,7 @@ class Rule4Formatter implements AddressFormatter {
 
     addIfPresent(parts, deliveryPoint.getOrganisation());
     addIfPresent(parts, deliveryPoint.getDepartment());
-
-    if (isPresent(deliveryPoint.getPoBoxNumber())) {
-      parts.add("PO Box " + deliveryPoint.getPoBoxNumber());
-    }
+    addPoBox(parts, deliveryPoint.getPoBoxNumber());
 
     parts.add(deliveryPoint.getBuildingName());
     parts.add(deliveryPoint.getBuildingNumber() + " " + deliveryPoint.getThroughfare());

@@ -2,7 +2,6 @@ package com.tapatron.pafaddressformat.formatter;
 
 import com.tapatron.pafaddressformat.DeliveryPoint;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -46,26 +45,6 @@ public class Rule3FormatterTest {
     assertThat(parts.get(4)).isEqualTo("ME16 0LP");
   }
 
-  // FIXME this rule is a bit crazy and needs implementing
-  @Ignore
-  @Test
-  public void formatsTheDeliveryPointWithOrganisation() throws Exception {
-    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
-        .withOrganisation("S D ALCOTT FLORISTS")
-        .withBuildingName("FLOWER HOUSE 189A")
-        .withThroughfare("PYE GREEN ROAD")
-        .withPostTown("CANNOCK")
-        .withPostcode("WS11 5SB")
-        .build();
-
-    List<String> parts = deliveryPoint.formattedParts();
-
-    assertThat(parts.get(0)).isEqualTo("S D ALCOTT FLORISTS");
-    assertThat(parts.get(1)).isEqualTo("FLOWER HOUSE");
-    assertThat(parts.get(2)).isEqualTo("189A PYE GREEN ROAD");
-    assertThat(parts.get(3)).isEqualTo("WS11 5SB");
-  }
-
   @Test
   public void formatsTheDeliveryPointWithRuleException() throws Exception {
     DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
@@ -82,5 +61,24 @@ public class Rule3FormatterTest {
     assertThat(parts.get(1)).isEqualTo("STATION ROAD");
     assertThat(parts.get(2)).isEqualTo("HOLT");
     assertThat(parts.get(3)).isEqualTo("NR25 7HG");
+  }
+
+  @Test
+  public void formatsTheDeliveryPointWithOrganisation() throws Exception {
+    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
+        .withOrganisation("S D ALCOTT FLORISTS")
+        .withBuildingName("FLOWER HOUSE 189A")
+        .withThroughfare("PYE GREEN ROAD")
+        .withPostTown("CANNOCK")
+        .withPostcode("WS11 5SB")
+        .build();
+
+    List<String> parts = deliveryPoint.formattedParts();
+
+    assertThat(parts.get(0)).isEqualTo("S D ALCOTT FLORISTS");
+    assertThat(parts.get(1)).isEqualTo("FLOWER HOUSE");
+    assertThat(parts.get(2)).isEqualTo("189A PYE GREEN ROAD");
+    assertThat(parts.get(3)).isEqualTo("CANNOCK");
+    assertThat(parts.get(4)).isEqualTo("WS11 5SB");
   }
 }

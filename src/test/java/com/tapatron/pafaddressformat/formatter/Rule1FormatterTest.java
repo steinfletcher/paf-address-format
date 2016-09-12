@@ -44,7 +44,7 @@ public class Rule1FormatterTest {
 
     assertThat(parts.get(0)).isEqualTo("WALSGRAVE HOSPITAL");
     assertThat(parts.get(1)).isEqualTo("A&E");
-    assertThat(parts.get(2)).isEqualTo("PO Box 1873");
+    assertThat(parts.get(2)).isEqualTo("PO BOX 1873");
     assertThat(parts.get(3)).isEqualTo("CHESHUNT COURT");
     assertThat(parts.get(4)).isEqualTo("CYPRESS STREET");
     assertThat(parts.get(5)).isEqualTo("TYRE INDUSTRIAL ESTATE");

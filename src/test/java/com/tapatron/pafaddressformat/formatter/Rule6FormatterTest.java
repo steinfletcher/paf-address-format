@@ -63,23 +63,4 @@ public class Rule6FormatterTest {
     assertThat(parts.get(3)).isEqualTo("HORLEY");
     assertThat(parts.get(4)).isEqualTo("RH6 0HP");
   }
-
-  @Test
-  public void formatsTheDeliveryPointShortForm() throws Exception {
-    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
-        .withSubBuildingName("12A")
-        .withBuildingName("12A")
-        .withThroughfare("UPPER HILL")
-        .withPostTown("HORLEY")
-        .withPostcode("RH6 0HP")
-        .build();
-
-    List<String> parts = deliveryPoint.formattedParts();
-
-    assertThat(parts.get(0)).isEqualTo("STABLES FLAT");
-    assertThat(parts.get(1)).isEqualTo("THE MANOR");
-    assertThat(parts.get(2)).isEqualTo("UPPER HILL");
-    assertThat(parts.get(3)).isEqualTo("HORLEY");
-    assertThat(parts.get(4)).isEqualTo("RH6 0HP");
-  }
 }

@@ -22,9 +22,7 @@ class Rule6Formatter implements AddressFormatter {
       parts.add(deliveryPoint.getDepartment());
     }
 
-    if (isPresent(deliveryPoint.getPoBoxNumber())) {
-      parts.add("PO Box " + deliveryPoint.getPoBoxNumber());
-    }
+    addPoBox(parts, deliveryPoint.getPoBoxNumber());
 
     if (isRuleException(deliveryPoint.getSubBuildingName())) {
       parts.add(deliveryPoint.getSubBuildingName() + " " + deliveryPoint.getBuildingName());
