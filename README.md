@@ -7,19 +7,20 @@ A simple library (with no dependencies) that formats a PAF address for print.
 
 ```java
 DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
-    .withBuildingName("1A")
-    .withDependentThroughfare("SEASTONE COURT")
-    .withThroughfare("STATION ROAD")
-    .withPostTown("HOLT")
-    .withPostcode("NR25 7HG")
-    .build();
+  .withSubBuildingName("A")
+  .withBuildingNumber("12")
+  .withThroughfare("HIGH STREET NORTH")
+  .withDependentLocality("COOMBE BISSETT")
+  .withPostTown("SALISBURY")
+  .withPostcode("SP5 4NA")
+  .build();
 
 List<String> parts = deliveryPoint.formattedParts();
 
-assertThat(parts.get(0)).isEqualTo("1A SEASTONE COURT");
-assertThat(parts.get(1)).isEqualTo("STATION ROAD");
-assertThat(parts.get(2)).isEqualTo("HOLT");
-assertThat(parts.get(3)).isEqualTo("NR25 7HG");
+assertThat(parts.get(0)).isEqualTo("12A HIGH STREET NORTH");
+assertThat(parts.get(1)).isEqualTo("COOMBE BISSETT");
+assertThat(parts.get(2)).isEqualTo("SALISBURY");
+assertThat(parts.get(3)).isEqualTo("SP5 4NA");
 
 // OR
 
