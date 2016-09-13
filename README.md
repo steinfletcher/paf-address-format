@@ -37,7 +37,7 @@ assertThat(parts.get(3)).isEqualTo("SP5 4NA");
 
 ### Get the entire address as a string including platform specific new line characters
 
-```
+```java
 DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
   .withSubBuildingName("2B")
   .withBuildingName("THE TOWER")
