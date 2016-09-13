@@ -38,13 +38,22 @@ assertThat(parts.get(3)).isEqualTo("SP5 4NA");
 ### Get the entire address as a string including platform specific new line characters
 
 ```
+DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
+  .withSubBuildingName("2B")
+  .withBuildingName("THE TOWER")
+  .withBuildingNumber("27")
+  .withThroughfare("JOHN STREET")
+  .withPostTown("WINCHESTER")
+  .withPostcode("SO23 9AP")
+  .build();
+
 String formatted = deliveryPoint.toString();
 
 assertThat(formatted).isEqualTo(
-    "12A HIGH STREET NORTH\n" +
-    "COOMBE BISSETT\n" +
-    "SALISBURY\n" +
-    "SP5 4NA"
+    "2B THE TOWER\n" +
+    "27 JOHN STREET\n" +
+    "WINCHESTER\n" +
+    "SO23 9AP"
 );
 
 ```
