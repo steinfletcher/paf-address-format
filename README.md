@@ -15,6 +15,8 @@ There are 7 rules which determine the print format of an address and several exc
 
 ## Usage
 
+### Extract the lines of the print address
+
 ```java
 DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
   .withSubBuildingName("A")
@@ -31,9 +33,11 @@ assertThat(parts.get(0)).isEqualTo("12A HIGH STREET NORTH");
 assertThat(parts.get(1)).isEqualTo("COOMBE BISSETT");
 assertThat(parts.get(2)).isEqualTo("SALISBURY");
 assertThat(parts.get(3)).isEqualTo("SP5 4NA");
+```
 
-// OR
+### Get the entire address as a string including platform specific new line characters
 
+```
 String formatted = deliveryPoint.toString();
 
 assertThat(formatted).isEqualTo(
