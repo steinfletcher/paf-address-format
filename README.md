@@ -7,6 +7,12 @@ A simple library (with no dependencies) that formats a PAF address for print.
 
 Attempts to comply with the Royal Mail's [PAF Programmer's guide](http://www.royalmail.com/sites/default/files/docs/pdf/programmers_guide_edition_7_v5.pdf)
 
+## Why?
+
+There are 7 rules which determine the print format of an address and several exceptions can be applied to these rules.
+ Writing some code to format an address is not a trivial task.  Given an address, this library determines the rule type, 
+ analyzes which exceptions should be applied and invokes a specific formatter for the address.
+
 ## Usage
 
 ```java

@@ -13,6 +13,8 @@ import static java.util.stream.Collectors.joining;
  * @see <a href="http://www.royalmail.com/sites/default/files/docs/pdf/programmers_guide_edition_7_v5.pdf"></a>
  *
  * Usage:
+ * <pre>
+ * {@code
  *
  * DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
  *   .withSubBuildingName("A")
@@ -40,6 +42,9 @@ import static java.util.stream.Collectors.joining;
  *   "SALISBURY\n" +
  *   "SP5 4NA"
  * );
+ * }
+ *
+ * </pre>
  *
  */
 public class DeliveryPoint {
