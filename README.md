@@ -35,7 +35,7 @@ assertThat(parts.get(2)).isEqualTo("SALISBURY");
 assertThat(parts.get(3)).isEqualTo("SP5 4NA");
 ```
 
-### Get the entire address as a string including platform specific new line characters
+### Get the entire address as a string
 
 ```java
 DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
