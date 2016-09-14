@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>A library to format a PAF address for printing</description>
+    <description>A library to format a UK postal address (PAF) for printing</description>
     <url>https://github.com/steinfletcher/paf-address-format</url>
 
     <scm>
