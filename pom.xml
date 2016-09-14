@@ -6,7 +6,7 @@
 
     <groupId>com.steinf</groupId>
     <artifactId>paf-address-format</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <packaging>jar</packaging>
 
