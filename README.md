@@ -13,6 +13,26 @@ There are 7 rules which determine the print format of an address and several exc
  Writing some code to format an address is not a trivial task.  Given an address, this library determines the rule type, 
  analyzes which exceptions should be applied and invokes a specific formatter for the address.
 
+## Release
+
+To add the dependency using Maven, use the following:
+
+```
+<dependency>
+    <groupId>com.steinf</groupId>
+    <artifactId>paf-address-format</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
+
+To add a dependency using Gradle:
+
+```
+dependencies {
+  compile 'com.steinf:paf-address-format:0.0.1'
+}
+```
+
 ## Usage
 
 ### Extract the lines of the print address
