@@ -3,6 +3,7 @@ paf-address-format
 
 [![CircleCI](https://circleci.com/gh/steinfletcher/paf-address-format.svg?style=svg&circle-token=bd07a471e0058fe5d3334d035939573e00dfcc47)](https://circleci.com/gh/steinfletcher/paf-address-format)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.steinf/paf-address-format/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.steinf/paf-address-format)
+[![Coverage Status](https://coveralls.io/repos/github/steinfletcher/paf-address-format/badge.svg)](https://coveralls.io/github/steinfletcher/paf-address-format)
 
 
 A simple library (with no dependencies) that formats a PAF address for print.
