@@ -2,11 +2,33 @@ package com.steinf.pafaddressformat.formatter;
 
 import com.steinf.pafaddressformat.common.Strings;
 
+import java.util.List;
+
+import static java.util.Arrays.asList;
+
 class RuleException {
+  private static final List<String> BUILDING_NAME_KEYWORDS = asList(
+      "Back of",
+      "Block",
+      "Blocks",
+      "Building",
+      "Maisonette",
+      "Maisonettes",
+      "Rear Of",
+      "Shop",
+      "Shops",
+      "Stall",
+      "Stalls",
+      "Suite",
+      "Suites",
+      "Unit",
+      "Units"
+  );
+
   private static boolean isFirstLastNumeric(String value) {
     return Strings.isPresent(value) &&
-           Character.isDigit(value.charAt(0)) &&
-           Character.isDigit(value.charAt(value.length() - 1));
+        Character.isDigit(value.charAt(0)) &&
+        Character.isDigit(value.charAt(value.length() - 1));
   }
 
   private static boolean isFirstAndPenultimateNumericLastAlpha(String value) {
@@ -20,6 +42,17 @@ class RuleException {
   private static boolean hasOneCharacter(String value) {
     return Strings.isPresent(value) && value.length() == 1
         && Character.isAlphabetic(value.charAt(0));
+  }
+
+  static boolean containsKeyword(String buildingName) {
+    if (buildingName != null) {
+      for (String keyword : BUILDING_NAME_KEYWORDS) {
+        if (buildingName.toUpperCase().contains(keyword.toUpperCase())) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   /**
@@ -43,6 +76,8 @@ class RuleException {
   }
 
   static boolean isRuleException(String value) {
-    return isFirstLastNumeric(value) || isFirstAndPenultimateNumericLastAlpha(value) || hasOneCharacter(value);
+    return isFirstLastNumeric(value) ||
+        isFirstAndPenultimateNumericLastAlpha(value) ||
+        hasOneCharacter(value);
   }
 }

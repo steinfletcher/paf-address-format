@@ -83,6 +83,65 @@ public class Rule3FormatterTest {
   }
 
   @Test
+  public void formatsTheDeliveryPointWithRange() throws Exception {
+    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
+        .withOrganisation("THE TAMBOURINE WAREHOUSE")
+        .withBuildingName("UNIT 1-3")
+        .withDependentThroughfare("INDUSTRIAL ESTATE")
+        .withThroughfare("TAME ROAD")
+        .withPostTown("LONDON")
+        .withPostcode("E6 7HS")
+        .build();
+
+    List<String> parts = deliveryPoint.formattedParts();
+
+    assertThat(parts.get(0)).isEqualTo("THE TAMBOURINE WAREHOUSE");
+    assertThat(parts.get(1)).isEqualTo("UNIT 1-3");
+    assertThat(parts.get(2)).isEqualTo("INDUSTRIAL ESTATE");
+    assertThat(parts.get(3)).isEqualTo("TAME ROAD");
+    assertThat(parts.get(4)).isEqualTo("LONDON");
+    assertThat(parts.get(5)).isEqualTo("E6 7HS");
+  }
+
+  @Test
+  public void formatsTheDeliveryPointWithStall() throws Exception {
+    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
+        .withOrganisation("QUIRKY CANDLES LTD")
+        .withBuildingName("STALL 4-5")
+        .withThroughfare("MARKET SQUARE")
+        .withPostTown("LIVERPOOL")
+        .withPostcode("L8 1LH")
+        .build();
+
+    List<String> parts = deliveryPoint.formattedParts();
+
+    assertThat(parts.get(0)).isEqualTo("QUIRKY CANDLES LTD");
+    assertThat(parts.get(1)).isEqualTo("STALL 4-5");
+    assertThat(parts.get(2)).isEqualTo("MARKET SQUARE");
+    assertThat(parts.get(3)).isEqualTo("LIVERPOOL");
+    assertThat(parts.get(4)).isEqualTo("L8 1LH");
+  }
+
+  @Test
+  public void formatsTheDeliveryPointWithRearOf() throws Exception {
+    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
+        .withOrganisation("FIONA'S FLOWERS")
+        .withBuildingName("REAR OF 5A")
+        .withThroughfare("HIGH STREET")
+        .withPostTown("GATESHEAD")
+        .withPostcode("NE8 1BH")
+        .build();
+
+    List<String> parts = deliveryPoint.formattedParts();
+
+    assertThat(parts.get(0)).isEqualTo("FIONA'S FLOWERS");
+    assertThat(parts.get(1)).isEqualTo("REAR OF 5A");
+    assertThat(parts.get(2)).isEqualTo("HIGH STREET");
+    assertThat(parts.get(3)).isEqualTo("GATESHEAD");
+    assertThat(parts.get(4)).isEqualTo("NE8 1BH");
+  }
+
+  @Test
   public void formatsTheDeliveryPointWithOrganisationAlt() throws Exception {
     DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
         .withOrganisation("CATH'S CAKES")

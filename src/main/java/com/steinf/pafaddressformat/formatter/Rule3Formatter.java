@@ -1,13 +1,13 @@
 package com.steinf.pafaddressformat.formatter;
 
 import com.steinf.pafaddressformat.DeliveryPoint;
-import com.steinf.pafaddressformat.common.Lists;
 import com.steinf.pafaddressformat.common.Strings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.steinf.pafaddressformat.common.Lists.addIfPresent;
 import static java.util.stream.Collectors.joining;
 
 class Rule3Formatter implements AddressFormatter {
@@ -15,14 +15,18 @@ class Rule3Formatter implements AddressFormatter {
   public List<String> format(DeliveryPoint deliveryPoint) {
     List<String> parts = new ArrayList<>();
 
-    Lists.addIfPresent(parts, deliveryPoint.getOrganisation());
-    Lists.addIfPresent(parts, deliveryPoint.getDepartment());
+    addIfPresent(parts, deliveryPoint.getOrganisation());
+    addIfPresent(parts, deliveryPoint.getDepartment());
     addPoBox(parts, deliveryPoint.getPoBoxNumber());
 
-    if (RuleException.isRuleException(deliveryPoint.getBuildingName())) {
+    if (RuleException.containsKeyword(deliveryPoint.getBuildingName())) {
+      parts.add(deliveryPoint.getBuildingName());
+      addIfPresent(parts, deliveryPoint.getDependentThroughfare());
+      addIfPresent(parts, deliveryPoint.getThroughfare());
+    } else if (RuleException.isRuleException(deliveryPoint.getBuildingName())) {
       if (Strings.isPresent(deliveryPoint.getDependentThroughfare())) {
         parts.add(deliveryPoint.getBuildingName() + " " + deliveryPoint.getDependentThroughfare());
-        Lists.addIfPresent(parts, deliveryPoint.getThroughfare());
+        addIfPresent(parts, deliveryPoint.getThroughfare());
       } else {
         parts.add(deliveryPoint.getBuildingName() + " " + deliveryPoint.getThroughfare());
       }
@@ -35,13 +39,13 @@ class Rule3Formatter implements AddressFormatter {
         addBuildingNumberLine(parts, deliveryPoint, numberPart);
       } else {
         parts.add(deliveryPoint.getBuildingName());
-        Lists.addIfPresent(parts, deliveryPoint.getDependentThroughfare());
-        Lists.addIfPresent(parts, deliveryPoint.getThroughfare());
+        addIfPresent(parts, deliveryPoint.getDependentThroughfare());
+        addIfPresent(parts, deliveryPoint.getThroughfare());
       }
     }
 
-    Lists.addIfPresent(parts, deliveryPoint.getDoubleDependentLocality());
-    Lists.addIfPresent(parts, deliveryPoint.getDependentLocality());
+    addIfPresent(parts, deliveryPoint.getDoubleDependentLocality());
+    addIfPresent(parts, deliveryPoint.getDependentLocality());
 
     parts.add(deliveryPoint.getPostTown());
     parts.add(deliveryPoint.getPostcode());
