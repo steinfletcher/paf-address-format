@@ -23,7 +23,7 @@ To add the dependency using Maven, use the following:
 <dependency>
     <groupId>com.steinf</groupId>
     <artifactId>paf-address-format</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 </dependency>
 ```
 
@@ -31,7 +31,7 @@ To add a dependency using Gradle:
 
 ```
 dependencies {
-  compile 'com.steinf:paf-address-format:0.0.1'
+  compile 'com.steinf:paf-address-format:0.0.2'
 }
 ```
 
