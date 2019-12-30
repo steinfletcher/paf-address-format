@@ -123,6 +123,42 @@ public class Rule3FormatterTest {
   }
 
   @Test
+  public void formatsTheDeliveryPointWithNumberRange() throws Exception {
+    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
+            .withOrganisation("AQA EDUCATIONS")
+            .withBuildingName("LYNTON HOUSE 7-12")
+            .withThroughfare("TAVISTOCK SQUARE")
+            .withPostTown("LONDON")
+            .withPostcode("WC1H 9LT")
+            .build();
+
+    List<String> parts = deliveryPoint.formattedParts();
+
+    assertThat(parts.get(0)).isEqualTo("AQA EDUCATIONS");
+    assertThat(parts.get(1)).isEqualTo("LYNTON HOUSE");
+    assertThat(parts.get(2)).isEqualTo("7-12 TAVISTOCK SQUARE");
+    assertThat(parts.get(3)).isEqualTo("LONDON");
+    assertThat(parts.get(4)).isEqualTo("WC1H 9LT");
+  }
+
+  @Test
+  public void formatsTheDeliveryPointWithRule3SpecialException() throws Exception {
+    DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
+            .withBuildingName("KIOSK 4")
+            .withThroughfare("BRUNSWICK CENTRE")
+            .withPostTown("LONDON")
+            .withPostcode("WC1N 1AE")
+            .build();
+
+    List<String> parts = deliveryPoint.formattedParts();
+
+    assertThat(parts.get(0)).isEqualTo("KIOSK 4");
+    assertThat(parts.get(1)).isEqualTo("BRUNSWICK CENTRE");
+    assertThat(parts.get(2)).isEqualTo("LONDON");
+    assertThat(parts.get(3)).isEqualTo("WC1N 1AE");
+  }
+
+  @Test
   public void formatsTheDeliveryPointWithRearOf() throws Exception {
     DeliveryPoint deliveryPoint = new DeliveryPoint.Builder()
         .withOrganisation("FIONA'S FLOWERS")

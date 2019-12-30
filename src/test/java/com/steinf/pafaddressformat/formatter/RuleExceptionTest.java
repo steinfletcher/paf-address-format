@@ -15,6 +15,16 @@ public class RuleExceptionTest {
   }
 
   @Test
+  public void isNotRule3SpecialExceptionLowerBound() throws Exception {
+    String buildingName = "KIOSK 1";
+
+    boolean isException = RuleException.isRule3SpecialException(buildingName);
+
+    assertThat(isException).isFalse();
+  }
+
+
+  @Test
   public void isRule3SpecialExceptionAboveRange() throws Exception {
     String buildingName = "FLOWER HOUSE 10000";
 
