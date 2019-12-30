@@ -60,7 +60,7 @@ class RuleException {
    * This rule has an exception to the exception :(, where the building name is NOT split if
    * the numeric part is a number between 1-9999 (not '1-77' and not '7a')
    */
-  static boolean isRule3SpecialException(String buildingName) {
+  static boolean isBuildingNameSpecialException(String buildingName) {
     String[] parts = buildingName.split("\\s+");
     if (parts.length > 0) {
       String lastWord = parts[parts.length - 1];
