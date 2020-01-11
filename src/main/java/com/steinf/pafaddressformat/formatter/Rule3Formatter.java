@@ -31,8 +31,8 @@ class Rule3Formatter implements AddressFormatter {
         parts.add(deliveryPoint.getBuildingName() + " " + deliveryPoint.getThroughfare());
       }
     } else {
-      if (RuleException.isRule3SpecialException(deliveryPoint.getBuildingName())) {
-        String[] tokens = deliveryPoint.getBuildingName().split("\\W+");
+      if (RuleException.isBuildingNameSpecialException(deliveryPoint.getBuildingName())) {
+        String[] tokens = deliveryPoint.getBuildingName().split("\\s+");
         String namePart = Arrays.stream(Arrays.copyOf(tokens, tokens.length - 1)).collect(joining(" "));
         String numberPart = tokens[tokens.length - 1];
         parts.add(namePart);

@@ -5,7 +5,10 @@ import com.steinf.pafaddressformat.common.Lists;
 import com.steinf.pafaddressformat.common.Strings;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static java.util.stream.Collectors.joining;
 
 class Rule6Formatter implements AddressFormatter {
   @Override
@@ -29,9 +32,18 @@ class Rule6Formatter implements AddressFormatter {
       parts.add(deliveryPoint.getSubBuildingName());
       parts.add(deliveryPoint.getBuildingName() + " " + deliveryPoint.getThroughfare());
     } else {
-      parts.add(deliveryPoint.getSubBuildingName());
-      parts.add(deliveryPoint.getBuildingName());
-      parts.add(deliveryPoint.getThroughfare());
+      if (RuleException.isBuildingNameSpecialException(deliveryPoint.getBuildingName())) {
+        String[] tokens = deliveryPoint.getBuildingName().split("\\s+");
+        String namePart = Arrays.stream(Arrays.copyOf(tokens, tokens.length - 1)).collect(joining(" "));
+        String numberPart = tokens[tokens.length - 1];
+        parts.add(deliveryPoint.getSubBuildingName());
+        parts.add(namePart);
+        addBuildingNumberLine(parts, deliveryPoint, numberPart);
+      } else {
+        parts.add(deliveryPoint.getSubBuildingName());
+        parts.add(deliveryPoint.getBuildingName());
+        parts.add(deliveryPoint.getThroughfare());
+      }
     }
 
     Lists.addIfPresent(parts, deliveryPoint.getDependentThroughfare());
